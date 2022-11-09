@@ -30,7 +30,10 @@ export class VideoPlayerComponent implements OnInit {
     const pictureInPicture = this.player.controlBar.getChild('pictureInPictureToggle')!;
     this.player.controlBar.removeChild(pictureInPicture)
     // 加入空白div
-    this.player.controlBar.addChild('div');
+    const playbackbtn = this.player.controlBar.getChild('playbackRateMenuButton')!;
+    const playbackindex = this.player.controlBar.children().indexOf(playbackbtn);
+    this.player.controlBar.addChild('component', {style: 'flex: 1;'}, playbackindex);
+    console.log(this.player.controlBar);
     this.player.ready(() => {
       console.log('asd')
     })
